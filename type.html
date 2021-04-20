@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <style>
+            .center {
+  margin:auto;
+  width: 20%;
+  height: 20%;
+  background-color: aquamarine;
+  padding: 20px;
+}
+        </style>
+    </head>
+    <title>type</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <body>
+<form >
+<div style="padding-top: 15%">
+        <div class="center"> 
+    <select id="s">
+        <option  value="1">Micro</option>
+        <option  value="2">Mini</option>
+        <option value="3">Prime</option>
+    </select>
+    <br><br>
+    <input type="number" name="km" id="km" placeholder="kilo meter" required ><br><br>
+   <button type="submit" onclick="find()">submit</button>
+   <button type="reset">reset</button>
+   </div>
+   </div>
+</form>
+<script>
+    function find()
+    {
+        event.preventDefault();
+        alert("Login clicked");
+        a=document.querySelector("#s").value;
+        alert(""+a);
+        if(a==1)
+        {
+            let km=document.querySelector("#km").value;
+            let amt=10*km;
+            alert("Micro Amount "+amt);
+        }
+        else if(a==2){
+            let km=document.querySelector("#km").value;
+            let amt=20*km;
+            alert("Mini Amount "+amt);
+        }
+        else if(a==3){
+            let km=document.querySelector("#km").value;
+            let amt=30*km;
+            alert("Prime Amount "+amt);
+        }
+        else{
+            alert("Invalid");
+        }
+    }
+</script>
+    </body>
+</html>
