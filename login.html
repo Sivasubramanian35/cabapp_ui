@@ -3,30 +3,33 @@
         <style>
             body{
                 background-color: lightseagreen;
+                background-size: cover;
+                background-repeat: no-repeat;
                 opacity: 0.8;
             }
-            .center {
-  margin:auto;
-  width: 20%;
-  height: 20%;
- 
-  padding: 20px;
-}
+            form{
+                border: 1px solid red;
+                margin-left: auto;
+                margin-right:auto;
+                margin-top: 10%;
+                width: 300px;
+                height: 200px;
+                text-align:center;
+                padding: 15px;
+            }
+
         </style>
     </head>
     <title>Login</title>
-    <center><h1>Login</h1></center>
+
     <body>
      <form action="type.html">
-     <div style="padding-top: 15%">
-     <div class="center"> 
+     <h1>Login</h1>
      <input type="text" name="username" id="username" placeholder="username" required autofocus>
      <br><br>
      <input type="password" name="password" id="password" placeholder="password" required ><br><br>
      <button type="submit" onclick="login()">submit</button>
      <button type="reset">reset</button>
-     </div>
-     </div>
      </form>
      <script>
      function login()
