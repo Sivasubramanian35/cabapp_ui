@@ -2,13 +2,13 @@
     <head>
         <style>
             body{
-                background-color: lightseagreen;
-                background-size: cover;
+                background-image: url("log.png");
                 background-repeat: no-repeat;
+                background-size: cover;
+                background-position-y: -170px;
                 opacity: 0.8;
             }
             form{
-                border: 1px solid red;
                 margin-left: auto;
                 margin-right:auto;
                 margin-top: 10%;
@@ -37,6 +37,7 @@
         event.preventDefault();
         let username=document.querySelector("#username").value;
         let password=document.querySelector("#password").value;
+        alert("username: "+username);
         if(username=="siva" && password=="king")
         {
             var v=confirm("Login successfully");
