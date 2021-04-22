@@ -1,60 +1,113 @@
 <html>
     <head>
         <style>
+            body
+            {
+                background-image: url("car.png");
+                opacity: 0.9;
+            }
             .center {
-  margin:auto;
-  width: 20%;
-  height: 20%;
-  background-color: aquamarine;
-  padding: 20px;
-}
+                margin:auto;
+                width: 20%;
+                height: 20%;
+                padding: 20px;
+            }
         </style>
     </head>
     <title>type</title>
-    <link rel="shortcut icon" href="/favicon.ico">
+    <center><h1>Cab Booking</h1></center>
     <body>
-<form >
-<div style="padding-top: 15%">
+     <form >
+      <div style="padding-top: 15%">
         <div class="center"> 
-    <select id="s">
-        <option  value="1">Micro</option>
-        <option  value="2">Mini</option>
-        <option value="3">Prime</option>
-    </select>
-    <br><br>
-    <input type="number" name="km" id="km" placeholder="kilo meter" required ><br><br>
-   <button type="submit" onclick="find()">submit</button>
-   <button type="reset">reset</button>
-   </div>
-   </div>
-</form>
-<script>
-    function find()
-    {
+          <select id="s" style="width:150px">
+          <option  value="0" >--Select the option--</option>
+          <option  value="1">Micro</option>
+          <option  value="2">Mini</option>
+          <option value="3">Prime</option>
+         </select><br><br>
+         <input type="number" name="km" id="km" placeholder="kilo meter" style="width:150px" required ><br>
+         <label>Journey Date</label><br>
+         <input type="date" id="date" style="width:150px"> <br>
+         <label>Pickup Time</label> <br>
+         <input type="time" id="time" style="width:150px"><br><br>
+         <label>Date of birth</label><br>
+         <input type="date" id="dob" style="width:150px" required><br><br>
+         <button type="submit" onclick="gen()" style="width:150px">Generate Bill</button><br><br>
+         <button type="reset" style="width:150px">reset</button><br>
+        </div>
+       </div>
+     </form>
+     <script>
+     function gen()
+     {
         event.preventDefault();
-        alert("Login clicked");
-        a=document.querySelector("#s").value;
-        alert(""+a);
-        if(a==1)
+        type=document.querySelector("#s").value;
+        if(type!=0)
+        {
+            alert("Your data are submited successfuiiy "+"\n"+"Wait your bill will generate");
+        if(type==1)
         {
             let km=document.querySelector("#km").value;
-            let amt=10*km;
-            alert("Micro Amount "+amt);
+            var amt=10*km;
+            var gst=(7*amt)/100;
         }
-        else if(a==2){
+        else if(type==2){
             let km=document.querySelector("#km").value;
-            let amt=20*km;
-            alert("Mini Amount "+amt);
+            var amt=20*km;
+            var gst=(7*amt)/100;
         }
-        else if(a==3){
+        else if(type==3){
             let km=document.querySelector("#km").value;
-            let amt=30*km;
-            alert("Prime Amount "+amt);
+            var amt=30*km;
+            var gst=(7*amt)/100;
         }
-        else{
-            alert("Invalid");
+        var dob=new Date(document.querySelector("#dob").value);
+        var year=dob.getFullYear();
+        var curdate=new Date();
+        var curyear=curdate.getFullYear();
+        if(curyear-year>50)
+        {
+            var discount=(50*amt)/100;
         }
-    }
-</script>
+        else
+        {
+            var discount=0;
+        }
+        var d=new Date(document.querySelector("#date").value);
+        var time=d.getHours();
+        var h=parseInt(time);
+        if(h>16 && h<19)
+        {
+            var peak=(amt*1.25)/100;
+        }
+        else
+        {
+            var peak=0;
+        }
+        var mywindow = window.open("");
+        mywindow.document.write('<html><head><title>' + "Welcome to OLA cab"  + '</title>');
+        mywindow.document.write('</head><body >');
+        mywindow.document.write('<h1>' + "********BILL********"  + '</h1>');
+        mywindow.document.write('<h2>'+"Amount--------------->|"+amt+'</h2>');
+        mywindow.document.write('<h2>'+"GST Percentage--->|7%"+'</h2>');
+        mywindow.document.write('<h2>'+"GST amount------->|"+gst+'</h2>');
+        mywindow.document.write('<h2>'+"Peak charge-------->|"+peak+'</h2>');
+        mywindow.document.write('<h2>'+"Discount----------->|-"+discount+'</h2>');
+        mywindow.document.write('<h2>'+"Total----------------->|Rs."+((amt+gst+peak)-discount)+'</h2>');
+        mywindow.document.write('<h1>' + "*********************"  + '</h1>');
+        mywindow.document.write('</body></html>');
+        mywindow.document.write('</body></html>');
+        mywindow.document.close(); 
+        mywindow.focus(); 
+        mywindow.print();
+        mywindow.close();
+        }
+        else 
+        {
+            alert("Invalid"+"\n"+"Please select the cab type");
+        }  
+     }
+     </script>
     </body>
 </html>

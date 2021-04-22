@@ -1,42 +1,45 @@
 <html>
     <head>
         <style>
+            body{
+                background-image: url("log.png");
+                opacity: 0.8;
+            }
             .center {
   margin:auto;
   width: 20%;
   height: 20%;
-  background-color: aquamarine;
+ 
   padding: 20px;
 }
         </style>
     </head>
     <title>Login</title>
-    <link rel="shortcut icon" href="/favicon.ico">
+    <center><h1>Login</h1></center>
     <body>
-<form action="type.html">
-<div style="padding-top: 15%">
-        <div class="center"> 
-    <input type="text" name="username" id="username" placeholder="username" required autofocus>
-    <br><br>
-    <input type="password" name="password" id="password" placeholder="password" required ><br><br>
-   <button type="submit" onclick="login()">submit</button>
-   <button type="reset">reset</button>
-   </div>
-   </div>
-</form>
-<script>
-    function login()
-    {
+     <form action="type.html">
+     <div style="padding-top: 15%">
+     <div class="center"> 
+     <input type="text" name="username" id="username" placeholder="username" required autofocus>
+     <br><br>
+     <input type="password" name="password" id="password" placeholder="password" required ><br><br>
+     <button type="submit" onclick="login()">submit</button>
+     <button type="reset">reset</button>
+     </div>
+     </div>
+     </form>
+     <script>
+     function login()
+     {
         event.preventDefault();
-        alert("Login clicked","hello");
         let username=document.querySelector("#username").value;
-        //let username=document.getElementById("username").value;
+        let password=document.querySelector("#password").value;
         alert("username: "+username);
-        if(username=="siva" && username.length>3)
+        if(username=="siva" && password=="king")
         {
             var v=confirm("Login successfully");
             if(v==true){
-                //window.open("","","width:10%;height:10%");
+                window.open("type.html","_self");
              }
              else{
                  alert("Cancelled")
@@ -45,7 +48,7 @@
         else{
             alert("Invalid Login credentials");
         }
-    }
-</script>
+     }
+     </script>
     </body>
 </html>
