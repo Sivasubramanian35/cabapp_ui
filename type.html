@@ -32,12 +32,14 @@
          </select><br>
          <label>Kilo meter</label><br>
          <input type="number" name="km" id="km" placeholder="kilo meter" style="width:150px" required ><br>
-         <label>Journey Date</label><br>
+         <label for"date">Journey Date</label><br>
          <input type="date" id="date" style="width:150px"> <br>
-         <label>Pickup Time</label> <br>
+         <label for="time">Pickup Time</label> <br>
          <input type="time" id="time" style="width:150px"><br>
-         <label>Date of birth</label><br>
-         <input type="date" id="dob" style="width:150px" required><br><br>
+         <label for="dob">Date of birth</label><br>
+         <input type="date" id="dob" style="width:150px" required><br>
+         <label for="img">Upload id proof</label><br>
+         <input type="file" id="img" name="img" style="width:150px" accept="image/*"><br><br>
          <button type="submit" onclick="gen()" style="width:150px;background-color:blue;color:white">Generate Bill</button><br><br>
          <button type="reset" style="width:150px;background-color:blue;color:white">reset</button><br>
      </form>
@@ -52,26 +54,26 @@
         if(type==1)
         {
             let km=document.querySelector("#km").value;
-            var amt=10*km;
+            var amt=10*km;   //price amount for mini
             var gst=(7*amt)/100;
         }
         else if(type==2){
             let km=document.querySelector("#km").value;
-            var amt=20*km;
+            var amt=20*km;  //price amount for micro
             var gst=(7*amt)/100;
         }
         else if(type==3){
             let km=document.querySelector("#km").value;
-            var amt=30*km;
+            var amt=30*km;   //price amount for prime
             var gst=(7*amt)/100;
         }
         var dob=new Date(document.querySelector("#dob").value);
         var year=dob.getFullYear();
         var curdate=new Date();
         var curyear=curdate.getFullYear();
-        if(curyear-year>50)
+        if(curyear-year>50)    //check age>50
         {
-            var discount=(50*amt)/100;
+            var discount=(50*amt)/100;   //Give discount only for senior citizen
         }
         else
         {
@@ -82,7 +84,7 @@
         var h=parseInt(time);
         if(h>16 && h<19)
         {
-            var peak=(amt*1.25)/100;
+            var peak=(amt*1.25)/100;  //Peak hour charge
         }
         else
         {
